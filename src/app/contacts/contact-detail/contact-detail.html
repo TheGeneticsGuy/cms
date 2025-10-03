@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+  <div class="panel-heading" style="min-height: 100px;">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>{{ selectedContact.name }}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <img
+          [src]="selectedContact.imagePath"
+          [alt]="selectedContact.name"
+          class="img-responsive"
+          style="max-height: 100px;">
+        <div class="pull-right btn-toolbar">
+            <a class="btn btn-primary" href="#">Edit</a>
+            <a class="btn btn-danger" href="#">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12">
+        <p><strong>Email:</strong> {{ selectedContact.email }}</p>
+        <p><strong>Phone:</strong> {{ selectedContact.phone }}</p>
+      </div>
+    </div>
+  </div>
+</div>
