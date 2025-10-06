@@ -2,14 +2,14 @@
   <div class="panel-heading" style="min-height: 100px;">
     <div class="row">
       <div class="col-xs-12">
-        <h2>{{ selectedContact.name }}</h2>
+        <h2>{{ contact.name }}</h2>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12">
         <img
-          [src]="selectedContact.imagePath"
-          [alt]="selectedContact.name"
+          [src]="contact.imagePath"
+          [alt]="contact.name"
           class="img-responsive"
           style="max-height: 100px;">
         <div class="pull-right btn-toolbar">
@@ -22,8 +22,8 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-xs-12">
-        <p><strong>Email:</strong> {{ selectedContact.email }}</p>
-        <p><strong>Phone:</strong> {{ selectedContact.phone }}</p>
+        <p><strong>Email:</strong> {{ contact.email }}</p>
+        <p><strong>Phone:</strong> {{ contact.phone }}</p>
       </div>
     </div>
   </div>
