@@ -13,3 +13,8 @@
   margin-left:1rem;
   margin-right:1rem;
 }
+
+/* My New change to ensure text wrap on URL */
+.label-value {
+  overflow-wrap: break-word;
+}

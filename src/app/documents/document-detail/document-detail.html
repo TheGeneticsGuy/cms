@@ -13,12 +13,14 @@
     <div class="pad-left-right">
       <div class="row">
         <label>Description:</label>
-        <span class="label-value">{{ document?.description}}</span>
+        <span class="label-value"><br>{{ document?.description}}</span>
       </div>
       <br>
       <div class="row">
         <label>URL:</label>
-        <span class="label-value">{{ document?.url}}</span>
+        <div class="label-value">
+            <a [href]="document?.url" target="_blank" rel="noopener noreferrer">{{ document?.url }}</a>
+        </div>
       </div>
     </div>
   </div>
