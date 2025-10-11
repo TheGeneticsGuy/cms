@@ -10,6 +10,7 @@
                         id="subject"
                         class="form-control"
                         size="120"
+                        #subject
                         max="120">
                 </div>
 
@@ -20,6 +21,7 @@
                         id="message"
                         class="form-control"
                         max="255"
+                        #msgText
                         size="120">
                 </div>
             </div>
@@ -27,11 +29,11 @@
                 <div class="col-xs-12">
                     <button
                         class="btn btn-success"
-                        type="submit"
+                        type="button"
                         (click)="onSendMessage()">Send</button>
                     <button
                         class="btn btn-danger"
-                        type="button">Clear</button>
+                        type="button" (click)="onClear()">Clear</button>
                 </div>
             </div>
         </form>

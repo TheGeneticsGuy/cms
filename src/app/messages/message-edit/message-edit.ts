@@ -14,18 +14,18 @@ export class MessageEdit {
     currentSender: string = 'Your Name'; // Placeholder
 
     onSendMessage() {
-    const subjectValue = this.subject.nativeElement.value;
-    const msgTextValue = this.msgText.nativeElement.value;
+      const subjectValue = this.subject.nativeElement.value;
+      const msgTextValue = this.msgText.nativeElement.value;
 
-    const newMessage = new Message(
-      '1', // hardcoding.. should this reference an incrememnting number?
-      subjectValue,
-      msgTextValue,
-      this.currentSender
-    );
+      const newMessage = new Message(
+        '1', // hardcoding.. should this reference an incrememnting number?
+        subjectValue,
+        msgTextValue,
+        this.currentSender
+      );
 
     this.addMessageEvent.emit(newMessage);
-    // this.onClear(); // Clearing from after sending it because it's nicer
+    this.onClear(); // Clearing from after sending it because it's nicer
   }
 
   onClear() {
