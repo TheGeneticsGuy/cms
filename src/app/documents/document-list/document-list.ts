@@ -19,6 +19,6 @@ export class DocumentList implements OnInit {
 
   // For emitting the document to the html file
   onSelectedDocument(document: Document) {
-    // this.selectedDocumentEvent.emit(document);
+    this.documentService.documentSelectedEvent.emit(document);
   }
 }
