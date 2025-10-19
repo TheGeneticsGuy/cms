@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter} from '@angular/core';
 import { Message } from './message.model';
 import { MOCKMESSAGES } from './MOCKMESSAGES';
 
@@ -6,6 +6,7 @@ import { MOCKMESSAGES } from './MOCKMESSAGES';
   providedIn: 'root'
 })
 export class MessageService {
+  messageChangedEvent = new EventEmitter<Message[]>();
   messages: Message[] = [];
 
   constructor() {
@@ -19,5 +20,10 @@ export class MessageService {
   getMessage(id: string): Message | null {
     const message = this.messages.find(msg => msg.id === id);
     return message || null;
+  }
+
+  addMessage(message: Message) {
+    this.messages.push(message);
+    this.messageChangedEvent.emit(this.getMessages());  // I used the getMessages method since it already has the slice().
   }
 }
