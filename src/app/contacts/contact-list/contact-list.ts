@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Contact } from '../contact.model';
 import { ContactService } from '../contact.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'cms-contact-list',
@@ -10,16 +11,20 @@ import { ContactService } from '../contact.service';
 })
 export class ContactList implements OnInit {
   contacts: Contact[] = [];
+  private subscription: Subscription;
 
   constructor( private contactService: ContactService) {
   }
 
   ngOnInit(): void {
     this.contacts = this.contactService.getContacts();
+    this.subscription = this.contactService.contactChangedEvent.subscribe(
+      (contacts: Contact[]) => {
+        this.contacts = contacts;
+      }
+    );
   }
 
-  // We need to emit this data up to parent (contacts)
-  // Contacts will then output it to the contact-detail
   onSelected(contact: Contact ) {
     this.contactService.contactSelectedEvent.emit(contact);
   }
