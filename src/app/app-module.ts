@@ -20,6 +20,7 @@ import { DocumentEdit } from './documents/document-edit/document-edit';
 import { ContactEdit } from './contacts/contact-edit/contact-edit';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ContactsFilterPipePipe } from './contacts/contacts-filter.pipe-pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MessageList,
     DropdownDirective,
     DocumentEdit,
-    ContactEdit
+    ContactEdit,
+    ContactsFilterPipePipe
   ],
   imports: [
     BrowserModule,
