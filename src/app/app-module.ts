@@ -18,6 +18,8 @@ import { MessageList } from './messages/message-list/message-list';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { DocumentEdit } from './documents/document-edit/document-edit';
 import { ContactEdit } from './contacts/contact-edit/contact-edit';
+import { FormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ContactEdit } from './contacts/contact-edit/contact-edit';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    DragDropModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners()
