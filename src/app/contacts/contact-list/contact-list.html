@@ -13,11 +13,17 @@
   </div>
 
   <div class="panel-body">
-    <div class="list-group">
+    <div class="list-group" cdkDropList>
       <cms-contact-item
         *ngFor="let contact of contacts"
         [contact]="contact"
-        (click)="onSelected(contact)">
+        cdkDrag
+        [cdkDragData]="contact">
+
+        <!-- Saw this in the CDK - visual previewwhilst dragging -->
+        <div *cdkDragPreview>
+           <cms-contact-item [contact]="contact"></cms-contact-item>
+        </div>
       </cms-contact-item>
     </div>
   </div>
