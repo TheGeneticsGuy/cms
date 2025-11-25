@@ -29,7 +29,7 @@
             name="email"
             [ngModel]="contact?.email"
             required
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+            pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,3}$"
             #email="ngModel">
             @if (email.touched && !email.valid) {
               <div class="alert alert-danger">
