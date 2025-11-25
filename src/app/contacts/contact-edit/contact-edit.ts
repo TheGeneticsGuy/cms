@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Contacts } from '../contacts';
 
 @Component({
   selector: 'cms-contact-edit',
@@ -8,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class ContactEdit {
 
+
+  onCancel() {
+
+  }
 }
