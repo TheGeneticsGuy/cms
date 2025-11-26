@@ -20,6 +20,8 @@ import { DocumentEdit } from './documents/document-edit/document-edit';
 import { ContactEdit } from './contacts/contact-edit/contact-edit';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { ContactsFilterPipe } from './contacts/contacts-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MessageList,
     DropdownDirective,
     DocumentEdit,
-    ContactEdit
+    ContactEdit,
+    ContactsFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     DragDropModule
   ],
   providers: [
-    provideBrowserGlobalErrorListeners()
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient(withInterceptorsFromDi())
   ],
   bootstrap: [App]
 })
