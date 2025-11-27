@@ -8,6 +8,9 @@ var logger = require('morgan');
 
 // import the routing file to handle the default (index) route
 var index = require('./server/routes/app');
+const messagesRoutes = require('./server/routes/messages');
+const contactsRoutes = require('./server/routes/contacts');
+const documentsRoutes = require('./server/routes/documents');
 
 var app = express(); // create an instance of express
 
@@ -40,12 +43,12 @@ app.use(express.static(path.join(__dirname, 'dist/cms/browser')));
 
 // Tell express to map the default route ('/') to the index route
 app.use('/', index);
-app.use('/documents', documentsRoutes);
 app.use('/messages', messagesRoutes);
 app.use('/contacts', contactsRoutes);
+app.use('/documents', documentsRoutes);
 
 // Tell express to map all other non-defined routes back to the index page
-app.get('*', (req, res) => {
+app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/cms/browser/index.html'));
 });
 
@@ -58,5 +61,5 @@ const server = http.createServer(app);
 
 // Tell the server to start listening on the provided port
 server.listen(port, function() {
-  console.log('API running on localhost: ' + port)
+  console.log(`🚀 API is running on http://localhost:3000`);
 });
