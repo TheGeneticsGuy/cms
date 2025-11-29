@@ -4,7 +4,7 @@ var http = require('http');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-// var mongoose = require('mongoose'); // This was in the lesson image, but not needed??
+var mongoose = require('mongoose');
 
 // import the routing file to handle the default (index) route
 var index = require('./server/routes/app');
@@ -37,9 +37,15 @@ app.use((req, res, next) => {
   next();
 });
 
-// Tell express to use the specified director as the
-// root directory for your web site
 app.use(express.static(path.join(__dirname, 'dist/cms/browser')));
+
+mongoose.connect('mongodb://localhost:27017/cms')
+  .then(() => {
+    console.log('Connected to database!');
+  })
+  .catch(() => {
+    console.log('Connection failed!');
+});
 
 // Tell express to map the default route ('/') to the index route
 app.use('/', index);

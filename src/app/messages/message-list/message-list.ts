@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Message } from '../message.model';
 import { MessageService } from '../message.service';
+import { ContactService } from '../../contacts/contact.service';
 
 @Component({
   selector: 'cms-message-list',
@@ -11,7 +12,7 @@ import { MessageService } from '../message.service';
 export class MessageList implements OnInit {
   messages: Message[] = [];
 
-  constructor(private messageService: MessageService) {}
+  constructor(private messageService: MessageService, private contactService: ContactService) {}
 
   ngOnInit(): void {
     this.messages = this.messageService.getMessages();
@@ -19,6 +20,8 @@ export class MessageList implements OnInit {
       (messages: Message[]) => {
         this.messages = messages;
     });
+
+    this.contactService.getContacts();
   }
 
 }
