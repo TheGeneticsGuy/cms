@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Contact } from './contact.model';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ContactService {
   contactSelectedEvent = new Subject<Contact>();
-  contactChangedEvent = new Subject<Contact[]>();
+  contactChangedEvent = new BehaviorSubject<Contact[]>([]);
   contacts: Contact[] = [];
   maxContactId: number;
 
@@ -64,7 +64,7 @@ export class ContactService {
   // }
 
   getContact(id: string): Contact {
-    const contact = this.contacts.find(cont => cont.id === id);
+    const contact = this.contacts.find(cont => cont.id === id || cont._id === id); // Compare the objectId contact id
     return contact || null;
   }
 

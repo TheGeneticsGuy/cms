@@ -39,20 +39,20 @@ export class MessageService {
     return this.messages.slice();
   }
 
-  storeMessages() {
-    const messages = JSON.stringify(this.messages);
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+  // storeMessages() {
+  //   const messages = JSON.stringify(this.messages);
+  //   const headers = new HttpHeaders({'Content-Type': 'application/json'});
 
-    this.http.put('https://wdd430-cms-fc829-default-rtdb.firebaseio.com/messages.json', messages, {headers: headers})
-      .subscribe({
-        next: () => {
-          this.messageChangedEvent.emit(this.messages.slice());
-        },
-        error: (error: any) => {
-          console.error(error);
-        }
-      });
-  }
+  //   this.http.put('https://wdd430-cms-fc829-default-rtdb.firebaseio.com/messages.json', messages, {headers: headers})
+  //     .subscribe({
+  //       next: () => {
+  //         this.messageChangedEvent.emit(this.messages.slice());
+  //       },
+  //       error: (error: any) => {
+  //         console.error(error);
+  //       }
+  //     });
+  // }
 
   getMessage(id: string): Message | null {
     const message = this.messages.find(msg => msg.id === id);
@@ -62,7 +62,6 @@ export class MessageService {
   addMessage(message: Message) {
     if (!message) return;
 
-    // Clear ID, server will generate it via sequence generator
     message.id = '';
 
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
@@ -70,7 +69,6 @@ export class MessageService {
     this.http.post<{ message: string, newMessage: Message }>('http://localhost:3000/messages', message, { headers: headers })
       .subscribe({
         next: (responseData) => {
-          // Add the new message returned from server to the local array
           this.messages.push(responseData.newMessage);
           this.messageChangedEvent.emit(this.messages.slice());
         },

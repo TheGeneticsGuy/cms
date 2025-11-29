@@ -15,23 +15,12 @@ export class MessageItem implements OnInit {
 
   constructor(private contactService: ContactService) {}
 
-  loadContacts() {
-    const contact: Contact = this.contactService.getContact(this.message.sender);
-    this.messageSender = contact ? contact.name : 'Unknown Sender' ;
-  }
-
   ngOnInit(): void {
     // Initial attempt
-    this.loadContacts();
-
-    // subscribe if contact wasn't found
-    this.contactService.contactChangedEvent.subscribe(() => {
-       this.loadContacts();
+    this.contactService.contactChangedEvent.subscribe((contacts: Contact[]) => {
+       const contact: Contact = this.contactService.getContact(this.message.sender);
+       this.messageSender = contact ? contact.name : 'Unknown Sender';
     });
-
-     if (this.contactService.getContacts().length === 0) {
-      this.contactService.getContacts(); // Forcing fetch if empty
-    }
 
   }
 }
